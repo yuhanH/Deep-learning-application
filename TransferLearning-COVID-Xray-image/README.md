@@ -1,5 +1,5 @@
 # A framework of deep learning classifier to diagnose COVID19 pneumonia using X-ray images
-### The course project in Image and Video processing, Spring 2020.  
+### The course project in [Image and Video processing](https://wp.nyu.edu/videolab/spring-2020-ece-6123-image-and-video-processing/), Spring 2020.  
 
 ___
 This is a deep learning-based framework that automatically detects pneumonia from X-rays images, and distinguishes pneumonia caused by COVID19, influenza, and bacteria to facilitate rapid proper intervention for patients. This deep learning framework is a transfer learning model using InceptionV3 architectures. The dataset used is a collection of 5651 X-ray images that contain 241 COVID19, 2577 bacterial pneumonia, 1356 other pneumonia, and 1377 normal conditions. 
