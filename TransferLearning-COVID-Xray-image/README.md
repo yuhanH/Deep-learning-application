@@ -18,6 +18,6 @@ To reduce the technical noises such as the exposure and translational variance, 
 
 Inception V3 was used for the transferred model. Three methods for transfer learning were used. First, only the architecture of the inception V3 is used, called no pre-trained. Second, the inception V3 with its pertained parameters as the initial parameters was used, and in the backpropagation, the gradient of parameters was learned. The last one, the pre-trained inception V3 was used, but all parameters in the model except the final output layer were frozen. It meant that in the backpropagation the parameters in final layer were learned, and the parameters in other layers will not be changed.
 
-<p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/tree/main/TransferLearning-COVID-Xray-image/model_performance.png" height="512" /></p>
+<p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/TransferLearning-COVID-Xray-image/model_performance.png" height="512" /></p>
 
 From the performance of these three transfer learning models, The no pre-trained model converged very slowly which corresponded to the results from in which the models usually converged after 80 epochs (not in the figure). The pre-trained model converged the fastest among these three models. For the pre-trained frozen model, it was converged quickly, but the loss was still big. It might result from the small number of learnable parameters in this model, only the final lay parameters. 
