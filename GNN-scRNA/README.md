@@ -32,9 +32,9 @@ $$ W^{(1)} \in \mathbb{R}^{50 \times 2} $$
 
 Using the above model, I trained the GCN model with 1000 epochs, and Table 1 showed training, validation, and test accuracy. The training accuracy was slightly higher than the validation and test groups. When I stratified the accuracy into different cell types, I found that monocytes had the highest accuracy and it matched with previously reported results that monocytes had the strongest response in the COVID19 patients.
 
-<p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/GNN-scRNA/GCN performance.png" height="512" /></p>
+<p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/GNN-scRNA/GCN performance.png" height="200" /></p>
 
 Lastly, I further explore the GCN model I trained. I construct a UMAP visualization using the 50-dimensional latent space from the first hidden layer. Compared with UMAP from PCA space, healthy and COVID19 cells have a better separation in the UMAP and cell-type information are retained as well.
 
-<p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/GNN-scRNA/UMAP covid" height="512" /></p>
+<p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/GNN-scRNA/UMAP covid.png" height="512" /></p>
   
