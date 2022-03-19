@@ -37,4 +37,4 @@ Using the above model, I trained the GCN model with 1000 epochs, and Table 1 sho
 Lastly, I further explore the GCN model I trained. I construct a UMAP visualization using the 50-dimensional latent space from the first hidden layer. Compared with UMAP from PCA space, healthy and COVID19 cells have a better separation in the UMAP and cell-type information are retained as well.
 
 <p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/GNN-scRNA/UMAP covid.png" height="512" /></p>
-  
+Figure 2: Visulization of 20K blood cells from COVID-19 and healthy cells (A, B) UMAP visulization of cells in the PCA space and GCN hidden layer space. Cells are annotated by marker genes.The COVID-19 and normal status are true labels from the dataset.
