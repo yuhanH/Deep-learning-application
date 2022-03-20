@@ -21,18 +21,17 @@ cells in total, a half from COVID-19 and the other half from healthy donors. I f
 
 Next, in this work, I built a two-layer GCN for node classification (healthy or COVID-19) on an undirectly KNN graph. I first performed PCA analysis and constructed the KNN graph (A) for cells from both healthy and COVID-19 patients. Then, I normalized KNN graph A as 
 
-[e1](https://latex.codecogs.com/svg.image?\tilde&space;A&space;=&space;D^&space;{-\frac{1}{2}}&space;A&space;D^{&space;-\frac{1}{2}})
+![e1](https://latex.codecogs.com/svg.image?\tilde&space;A&space;=&space;D^&space;{-\frac{1}{2}}&space;A&space;D^{&space;-\frac{1}{2}})
 
 The forward model and the cross-entropy are defined in the same model from [Kipf & Illing (2017)](https://arxiv.org/abs/1609.02907).
 
-\begin{equation}
-Z = f(X,A) =  \textrm{softmax}(\tilde A  \textrm{ ReLU}(\tilde AXW^{(0)})W^{(1)})
-\end{equation}
+![e2](https://latex.codecogs.com/svg.image?Z&space;=&space;f(X,A)&space;=&space;&space;\textrm{softmax}(\tilde&space;A&space;&space;\textrm{&space;ReLU}(\tilde&space;AXW^{(0)})W^{(1)}))
+
 In this work, the input layer uses 5000 features and the first hidden layer has 50 dimensions. 
 
-[e2](https://latex.codecogs.com/svg.image?W^{(0)}&space;\in&space;\mathbb{R}^{2000&space;\times&space;50}&space;)
+![e3](https://latex.codecogs.com/svg.image?W^{(0)}&space;\in&space;\mathbb{R}^{2000&space;\times&space;50}&space;)
 
-[e3](https://latex.codecogs.com/svg.image?W^{(1)}&space;\in&space;\mathbb{R}^{50&space;\times&space;2})
+![e4](https://latex.codecogs.com/svg.image?W^{(1)}&space;\in&space;\mathbb{R}^{50&space;\times&space;2})
 
 Using the above model, I trained the GCN model with 1000 epochs, and Table 1 showed training, validation, and test accuracy. The training accuracy was slightly higher than the validation and test groups. When I stratified the accuracy into different cell types, I found that monocytes had the highest accuracy and it matched with previously reported results that monocytes had the strongest response in the COVID19 patients.
 
