@@ -19,16 +19,20 @@ In the visualization of 3K blood in the UMAP calculated from PCA embeddings, we 
 For the application of the GCN model, I use the scRNA-seq data from [Su et al. (2020)](https://www.cell.com/cell/fulltext/S0092-8674(20)31444-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867420314446%3Fshowall%3Dtrue). I down-sampled to 20K
 cells in total, a half from COVID-19 and the other half from healthy donors. I first performed the PCA analysis and visualized cells from the 50 dimensions of PCA embeddings in the 2d Uniform Manifold Approximation and Projection (UMAP). It showed that cells from healthy and COVID-19 are generally mixed in most cell types (Figure 2A). It indicates that the majority variance in the dataset is the variance among different cell types rather than the cellular responses in the COVID-19 pathological process. 
 
-Next, in this work, I built a two-layer GCN for node classification (healthy or COVID-19) on an undirectly KNN graph. I first performed PCA analysis and constructed the KNN graph ($A$) for cells from both healthy and COVID-19 patients. Then, I normalized KNN graph $A$ as 
-$$\tilde A = D^ {-\frac{1}{2}} A D^{ -\frac{1}{2}} $$ 
+Next, in this work, I built a two-layer GCN for node classification (healthy or COVID-19) on an undirectly KNN graph. I first performed PCA analysis and constructed the KNN graph (A) for cells from both healthy and COVID-19 patients. Then, I normalized KNN graph A as 
+
+[e1](https://latex.codecogs.com/svg.image?\tilde&space;A&space;=&space;D^&space;{-\frac{1}{2}}&space;A&space;D^{&space;-\frac{1}{2}})
+
 The forward model and the cross-entropy are defined in the same model from [Kipf & Illing (2017)](https://arxiv.org/abs/1609.02907).
 
 \begin{equation}
 Z = f(X,A) =  \textrm{softmax}(\tilde A  \textrm{ ReLU}(\tilde AXW^{(0)})W^{(1)})
 \end{equation}
 In this work, the input layer uses 5000 features and the first hidden layer has 50 dimensions. 
-$$ W^{(0)} \in \mathbb{R}^{2000 \times 50} $$
-$$ W^{(1)} \in \mathbb{R}^{50 \times 2} $$
+
+[e2](https://latex.codecogs.com/svg.image?W^{(0)}&space;\in&space;\mathbb{R}^{2000&space;\times&space;50}&space;)
+
+[e3](https://latex.codecogs.com/svg.image?W^{(1)}&space;\in&space;\mathbb{R}^{50&space;\times&space;2})
 
 Using the above model, I trained the GCN model with 1000 epochs, and Table 1 showed training, validation, and test accuracy. The training accuracy was slightly higher than the validation and test groups. When I stratified the accuracy into different cell types, I found that monocytes had the highest accuracy and it matched with previously reported results that monocytes had the strongest response in the COVID19 patients.
 
