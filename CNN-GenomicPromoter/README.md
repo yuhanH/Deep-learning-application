@@ -7,10 +7,8 @@ ___
 ## Data preprocess
 The single-cell cut&tag-pro data is from [Zhang & Srivastava et al. (2021)](https://www.biorxiv.org/content/10.1101/2021.09.13.460120v1). Cells are annotated by the surface protein markers and the whole genome is chunked to 200bp DNA fragments. The cells from the same cell type are aggregated to enhance the signal. To simplify the model, I just select four cell types as the input data: CD8 T, CD4 T, B cells, and monocytes and only consider if the DNA fragment has the role of promoter. Thus, in the aggregated data, each 200bp DNA fragment has four outputs, probability of promoters in CD8 T, CD4 T, B cells, and monocytes. Due to the imbalance of the data, I sampled an equal number of negative samples (non-promoter) DNA fragments to the positive samples also controlling for the GC content. 
 After preprocessing, the input $ X $ has 263837 200bp DNA fragments (samples) and four base-pairs as features (ATCG) and the output $Y$ has four probabilities for each sample. 
-```math
-X \in R^{n_{DNAfrag} \times 4}
-Y \in R^{n_{DNAfrag} \times 4} 
-```
+![e1](https://latex.codecogs.com/svg.image?X&space;\in&space;R^{n_{DNAfrag}&space;\times&space;4})
+![e2](https://latex.codecogs.com/svg.image?Y&space;\in&space;R^{n_{DNAfrag}&space;\times&space;4}&space;)
 
 
 ___  
