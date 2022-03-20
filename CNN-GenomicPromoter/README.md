@@ -6,7 +6,7 @@ ___
 
 ## Data preprocess
 The single-cell cut&tag-pro data is from [Zhang & Srivastava et al. (2021)](https://www.biorxiv.org/content/10.1101/2021.09.13.460120v1). Cells are annotated by the surface protein markers and the whole genome is chunked to 200bp DNA fragments. The cells from the same cell type are aggregated to enhance the signal. To simplify the model, I just select four cell types as the input data: CD8 T, CD4 T, B cells, and monocytes and only consider if the DNA fragment has the role of promoter. Thus, in the aggregated data, each 200bp DNA fragment has four outputs, probability of promoters in CD8 T, CD4 T, B cells, and monocytes. Due to the imbalance of the data, I sampled an equal number of negative samples (non-promoter) DNA fragments to the positive samples also controlling for the GC content. 
-After preprocessing, the input $ X $ has 263837 200bp DNA fragments (samples) and four base-pairs as features (ATCG) and the output $Y$ has four probabilities for each sample. 
+After preprocessing, the input X has 263837 200bp DNA fragments (samples) and four base-pairs as features (ATCG) and the output Y has four probabilities for each sample. 
 
 ![e1](https://latex.codecogs.com/svg.image?X&space;\in&space;R^{n_{DNAfrag}&space;\times&space;4})
 
@@ -20,8 +20,11 @@ This is a multi-task deep convolutional neural network. The basic model architec
 
 <p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/CNN-GenomicPromoter/framework.png" height="200" /></p>
 
-$$ Y^{t}= W^{t}f(X,W), t \in [0,3]  $$
-$$ Y^t \in R^{n_{DNAfrag} \times 1} $$
+![e3](https://latex.codecogs.com/svg.image?&space;Y^{t}=&space;W^{t}f(X,W),&space;t&space;\in&space;[0,3])
+
+![e4](https://latex.codecogs.com/svg.image?&space;Y^t&space;\in&space;R^{n_{DNAfrag}&space;\times&space;1})
+
+
 
 The architecture overview (this plot is modified from https://github.com/bernardo-de-almeida/DeepSTARR/)
 
@@ -32,7 +35,7 @@ The model generally works well. The performance also varies across different cel
 <p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/CNN-GenomicPromoter/performance.png" height="400" /></p>
 After training the model, the model enables exploring the importance of each base-pair in the 200bp DNA fragment for the prediction. I calculated the importance score for each base-pair of each DNA fragment. The importance score was introduced by [Shrikumar er al. 2018](https://arxiv.org/abs/1811.00416). The general idea is to mask one base-pair and put the masked DNA into the model, and the difference of prediction probability is considered as the importance score. 
 
-$$ P(X) - P(X_{d(i)}) $$
+![e5](https://latex.codecogs.com/svg.image?&space;P(X)&space;-&space;P(X_{d(i)}))
 
 Here is one example of a conserved DNA promoter region for these four cell types. It shows that what base-pairs have positive or negative influence on the role of promoter regions. 
 <p align="center"><img src="https://github.com/yuhanH/Deep-learning-application/blob/main/CNN-GenomicPromoter/conserved promoter.png" height="512" /></p>
